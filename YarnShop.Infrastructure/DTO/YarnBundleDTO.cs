@@ -2,7 +2,7 @@
 
 namespace YarnShop.Infrastructure.DTO
 {
-    internal class YarnBundleDTO
+    public class YarnBundleDTO
     {
         public int Id { get; set; }
         public YarnType YarnType { get; set; }

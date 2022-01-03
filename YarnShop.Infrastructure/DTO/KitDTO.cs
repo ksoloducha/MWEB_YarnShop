@@ -3,7 +3,7 @@ using YarnShop.Core.Domain;
 
 namespace YarnShop.Infrastructure.DTO
 {
-    internal class KitDTO
+    public class KitDTO
     {
         public int Id { get; set; }
         public Dictionary<YarnType, int> Yarns { get; set; }
