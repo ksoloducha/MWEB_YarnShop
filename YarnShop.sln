@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.Core", "YarnShop.Core\YarnShop.Core.csproj", "{925B974B-2FD1-4765-837F-59402C7B85BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.Infrastructure", "YarnShop.Infrastructure\YarnShop.Infrastructure.csproj", "{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.WebAPI", "YarnShop.WebAPI\YarnShop.WebAPI.csproj", "{FD7BA834-09F0-44DA-866C-FA8356521B08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{925B974B-2FD1-4765-837F-59402C7B85BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925B974B-2FD1-4765-837F-59402C7B85BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925B974B-2FD1-4765-837F-59402C7B85BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925B974B-2FD1-4765-837F-59402C7B85BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
