@@ -5,34 +5,29 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    internal class CrochetHooksRepository : ICrochetHooksRepository
+    internal class KitsRepository : IKitsRepository
     {
-        public Task AddAsync(CrochetHook c)
+        public Task AddAsync(Kit k)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteAsync(CrochetHook c)
+        public Task DeleteAsync(Kit k)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<CrochetHook>> GetAllAsync()
+        public Task<IEnumerable<Kit>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<CrochetHook> GetAsync(int id)
+        public Task<Kit> GetAsync(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<CrochetHook>> GetSizeEqualOrBigger(double size)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task UpdateAsync(CrochetHook c)
+        public Task UpdateAsync(Kit k)
         {
             throw new System.NotImplementedException();
         }
