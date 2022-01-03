@@ -4,7 +4,7 @@ using YarnShop.Core.Domain;
 
 namespace YarnShop.Core.Repositories
 {
-    internal interface IKnittingNeedlesRepository
+    public interface IKnittingNeedlesRepository
     {
         Task UpdateAsync(KnittingNeedle k);
         Task DeleteAsync(KnittingNeedle k);

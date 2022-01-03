@@ -4,7 +4,7 @@ using YarnShop.Core.Domain;
 
 namespace YarnShop.Core.Repositories
 {
-    internal interface ISkeinsRepository
+    public interface ISkeinsRepository
     {
         Task UpdateAsync(Skein s);
         Task DeleteAsync(Skein s);

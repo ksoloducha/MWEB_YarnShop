@@ -4,7 +4,7 @@ using YarnShop.Core.Domain;
 
 namespace YarnShop.Core.Repositories
 {
-    internal interface IYarnBundlesRepository
+    public interface IYarnBundlesRepository
     {
         Task UpdateAsync(YarnBundle y);
         Task DeleteAsync(YarnBundle y);

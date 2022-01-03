@@ -4,7 +4,7 @@ using YarnShop.Core.Domain;
 
 namespace YarnShop.Core.Repositories
 {
-    internal interface ICrochetHooksRepository
+    public interface ICrochetHooksRepository
     {
         Task UpdateAsync(CrochetHook c);
         Task DeleteAsync(CrochetHook c);
