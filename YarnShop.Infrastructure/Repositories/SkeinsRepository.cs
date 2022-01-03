@@ -5,7 +5,7 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    internal class SkeinsRepository : ISkeinsRepository
+    public class SkeinsRepository : ISkeinsRepository
     {
         public Task AddAsync(Skein s)
         {

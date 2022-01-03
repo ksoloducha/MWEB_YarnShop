@@ -5,7 +5,7 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    internal class CrochetHooksRepository : ICrochetHooksRepository
+    public class CrochetHooksRepository : ICrochetHooksRepository
     {
         public Task AddAsync(CrochetHook c)
         {

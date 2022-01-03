@@ -5,7 +5,7 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    internal class YarnTypesRepository : IYarnTypesRepository
+    public class YarnTypesRepository : IYarnTypesRepository
     {
         public Task AddAsync(YarnType y)
         {

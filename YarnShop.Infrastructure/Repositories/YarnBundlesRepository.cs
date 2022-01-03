@@ -5,7 +5,7 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    internal class YarnBundlesRepository : IYarnBundlesRepository
+    public class YarnBundlesRepository : IYarnBundlesRepository
     {
         public Task AddAsync(YarnBundle y)
         {
