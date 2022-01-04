@@ -75,9 +75,9 @@ namespace YarnShop.Infrastructure.Services
             return mapToDTO(updatedYarnType);
         }
 
-        public Task<YarnTypeDTO> GetById(int id)
+        public async Task<YarnTypeDTO> GetById(int id)
         {
-            var y = _yarnTypesRepository.GetAsync(id);
+            var y = await _yarnTypesRepository.GetAsync(id);
             return mapToDTO(y);
         }
     }
