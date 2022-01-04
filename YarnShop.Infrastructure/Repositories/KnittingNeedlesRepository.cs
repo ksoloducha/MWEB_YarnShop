@@ -7,12 +7,12 @@ namespace YarnShop.Infrastructure.Repositories
 {
     public class KnittingNeedlesRepository : IKnittingNeedlesRepository
     {
-        public Task AddAsync(KnittingNeedle k)
+        public Task AddAsync(KnittingNeedle c)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteAsync(KnittingNeedle k)
+        public Task DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
         }
@@ -32,7 +32,7 @@ namespace YarnShop.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(KnittingNeedle k)
+        public Task UpdateAsync(KnittingNeedle c)
         {
             throw new System.NotImplementedException();
         }

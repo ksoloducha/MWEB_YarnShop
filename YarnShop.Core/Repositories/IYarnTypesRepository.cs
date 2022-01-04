@@ -7,7 +7,7 @@ namespace YarnShop.Core.Repositories
     public interface IYarnTypesRepository
     {
         Task UpdateAsync(YarnType y);
-        Task DeleteAsync(YarnType y);
+        Task DeleteAsync(int id);
         Task AddAsync(YarnType y);
         Task<YarnType> GetAsync(int id);
         Task<IEnumerable<YarnType>> GetAllAsync();

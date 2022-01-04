@@ -12,7 +12,7 @@ namespace YarnShop.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteAsync(Skein s)
+        public Task DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
         }

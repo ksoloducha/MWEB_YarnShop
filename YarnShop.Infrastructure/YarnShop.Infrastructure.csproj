@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YarnShop.Core\YarnShop.Core.csproj" />
+  </ItemGroup>
+
 </Project>

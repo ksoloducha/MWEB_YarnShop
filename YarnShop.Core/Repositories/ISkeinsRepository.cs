@@ -7,7 +7,7 @@ namespace YarnShop.Core.Repositories
     public interface ISkeinsRepository
     {
         Task UpdateAsync(Skein s);
-        Task DeleteAsync(Skein s);
+        Task DeleteAsync(int id);
         Task AddAsync(Skein s);
         Task<Skein> GetAsync(int id);
         Task<IEnumerable<Skein>> GetAllAsync();

@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
+using YarnShop.Core.Repositories;
+using YarnShop.Infrastructure.Repositories;
+using YarnShop.Infrastructure.Services;
 
 namespace Zawodnicy.WebApi
 {
@@ -49,6 +52,21 @@ namespace Zawodnicy.WebApi
                         }
                     };
                 });
+
+            services.AddScoped<IKnittingNeedlesRepository, KnittingNeedlesRepository>();
+            services.AddScoped<IKnittingNeedlesService, KnittingNeedlesService>();
+
+            services.AddScoped<IKitsRepository, KitsRepository>();
+            services.AddScoped<IKitsService, KitsService>();
+
+            services.AddScoped<ISkeinsRepository, SkeinsRepository>();
+            services.AddScoped<ISkeinsService, SkeinsService>();
+
+            services.AddScoped<IYarnBundlesRepository, YarnBundlesRepository>();
+            services.AddScoped<IYarnBundlesService, YarnBundlesService>();
+
+            services.AddScoped<IYarnTypesRepository, YarnTypesRepository>();
+            services.AddScoped<IYarnTypesService, YarnTypesService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

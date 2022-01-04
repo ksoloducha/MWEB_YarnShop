@@ -6,7 +6,7 @@ namespace YarnShop.Core.Domain
     {
         public int Id { get; set; }
         public Dictionary<YarnType, int> Yarns { get; set; }
-        public CrochetHook Tool { get; set; }
+        public KnittingNeedle Tool { get; set; }
         public string Pattern { get; set; }
     }
 }
