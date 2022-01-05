@@ -20,12 +20,14 @@ namespace YarnShop.Infrastructure.Services
         {
             Color c = new Color()
             {
-                Name = color.Name
+                Name = color.Name,
+                n = color.n
             };
             await _colorsRepository.AddAsync(c);
             return new ColorDTO()
             {
-                Name = color.Name
+                Name = color.Name,
+                n = color.n
             };
         }
 
@@ -40,7 +42,8 @@ namespace YarnShop.Infrastructure.Services
             return new ColorDTO()
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
+                n = x.n
             };
         }
 
@@ -54,7 +57,8 @@ namespace YarnShop.Infrastructure.Services
             Color updatedColor = new Color()
             {
                 Id = id,
-                Name = color.Name
+                Name = color.Name,
+                n = color.n
             };
             await _colorsRepository.UpdateAsync(updatedColor);
             return mapToDTO(updatedColor);
