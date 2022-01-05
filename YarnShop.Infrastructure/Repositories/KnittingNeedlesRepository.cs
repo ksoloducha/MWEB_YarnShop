@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YarnShop.Core.Domain;
 using YarnShop.Core.Repositories;
@@ -15,34 +17,86 @@ namespace YarnShop.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public Task AddAsync(KnittingNeedle c)
+        public async Task AddAsync(KnittingNeedle c)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.KnittingNeedle.Add(c);
+                _appDbContext.SaveChanges();
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Remove(_appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == id));
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task<IEnumerable<KnittingNeedle>> GetAllAsync()
+        public async Task<IEnumerable<KnittingNeedle>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.FromResult(_appDbContext.KnittingNeedle);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task<KnittingNeedle> GetAsync(int id)
+        public async Task<KnittingNeedle> GetAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task<IEnumerable<KnittingNeedle>> GetSizeEqualOrBigger(double size)
+        public async Task<IEnumerable<KnittingNeedle>> GetSizeEqualOrBigger(double size)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.FromResult(_appDbContext.KnittingNeedle.Where(x => x.Size >= size));
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task UpdateAsync(KnittingNeedle c)
+        public async Task UpdateAsync(KnittingNeedle c)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var s = _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == c.Id);
+                s.Size = c.Size;
+                s.n= c.n;
+                s.Circular = c.Circular;
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YarnShop.Core.Domain;
 using YarnShop.Core.Repositories;
@@ -15,29 +17,74 @@ namespace YarnShop.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public Task AddAsync(Kit k)
+        public async Task AddAsync(Kit k)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Kit.Add(k);
+                _appDbContext.SaveChanges();
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Remove(_appDbContext.Kit.FirstOrDefault(x => x.Id == id));
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task<IEnumerable<Kit>> GetAllAsync()
+        public async Task<IEnumerable<Kit>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.FromResult(_appDbContext.Kit);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task<Kit> GetAsync(int id)
+        public async Task<Kit> GetAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _appDbContext.Kit.FirstOrDefault(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task UpdateAsync(Kit k)
+        public async Task UpdateAsync(Kit k)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var s = _appDbContext.Kit.FirstOrDefault(x => x.Id == k.Id);
+                s.yarnType = k.yarnType;
+                s.n = k.n;
+                s.Tool = k.Tool;
+                s.Pattern = k.Pattern;
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
     }
 }

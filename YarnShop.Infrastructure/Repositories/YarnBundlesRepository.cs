@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YarnShop.Core.Domain;
 using YarnShop.Core.Repositories;
@@ -15,29 +17,73 @@ namespace YarnShop.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public Task AddAsync(YarnBundle y)
+        public async Task AddAsync(YarnBundle y)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.YarnBundles.Add(y);
+                _appDbContext.SaveChanges();
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Remove(_appDbContext.YarnBundles.FirstOrDefault(x => x.Id == id));
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task<IEnumerable<YarnBundle>> GetAllAsync()
+        public async Task<IEnumerable<YarnBundle>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.FromResult(_appDbContext.YarnBundles);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task<YarnBundle> GetAsync(int id)
+        public async Task<YarnBundle> GetAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _appDbContext.YarnBundles.FirstOrDefault(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task UpdateAsync(YarnBundle y)
+        public async Task UpdateAsync(YarnBundle y)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var s = _appDbContext.YarnBundles.FirstOrDefault(x => x.Id == y.Id);
+                s.YarnType = y.YarnType;
+                s.n = y.n;
+                s.PricePercentage = y.PricePercentage;
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
     }
 }

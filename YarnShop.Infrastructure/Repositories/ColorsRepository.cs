@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using YarnShop.Core.Domain;
 using YarnShop.Core.Repositories;
@@ -14,29 +16,71 @@ namespace YarnShop.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public Task AddAsync(Color c)
+        public async Task AddAsync(Color c)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Color.Add(c);
+                _appDbContext.SaveChanges();
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _appDbContext.Remove(_appDbContext.Color.FirstOrDefault(x => x.Id == id));
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
 
-        public Task<IEnumerable<Color>> GetAllAsync()
+        public async Task<IEnumerable<Color>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return await Task.FromResult(_appDbContext.Color);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task<Color> GetAsync(int id)
+        public async Task<Color> GetAsync(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _appDbContext.Color.FirstOrDefault(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+                return null;
+            }
         }
 
-        public Task UpdateAsync(Color c)
+        public async Task UpdateAsync(Color c)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var s = _appDbContext.Color.FirstOrDefault(x => x.Id == c.Id);
+                c.Name = s.Name;
+                _appDbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
         }
     }
 }
