@@ -7,6 +7,14 @@ namespace YarnShop.Infrastructure.Repositories
 {
     public class YarnTypesRepository : IYarnTypesRepository
     {
+
+        private AppDbContext _appDbContext;
+
+        public YarnTypesRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
         public Task AddAsync(YarnType y)
         {
             throw new System.NotImplementedException();

@@ -5,9 +5,16 @@ using YarnShop.Core.Repositories;
 
 namespace YarnShop.Infrastructure.Repositories
 {
-    public class SkeinsRepository : ISkeinsRepository
+    public class ColorsRepository : IColorsRepository
     {
-        public Task AddAsync(Skein s)
+        private AppDbContext _appDbContext;
+
+        public ColorsRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public Task AddAsync(Color c)
         {
             throw new System.NotImplementedException();
         }
@@ -17,17 +24,17 @@ namespace YarnShop.Infrastructure.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<Skein>> GetAllAsync()
+        public Task<IEnumerable<Color>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Skein> GetAsync(int id)
+        public Task<Color> GetAsync(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(Skein s)
+        public Task UpdateAsync(Color c)
         {
             throw new System.NotImplementedException();
         }

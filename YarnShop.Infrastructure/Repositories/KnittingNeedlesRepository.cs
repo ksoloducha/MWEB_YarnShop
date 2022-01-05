@@ -7,6 +7,14 @@ namespace YarnShop.Infrastructure.Repositories
 {
     public class KnittingNeedlesRepository : IKnittingNeedlesRepository
     {
+
+        private AppDbContext _appDbContext;
+
+        public KnittingNeedlesRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
         public Task AddAsync(KnittingNeedle c)
         {
             throw new System.NotImplementedException();

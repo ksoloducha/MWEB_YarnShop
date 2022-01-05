@@ -20,14 +20,16 @@ namespace YarnShop.Infrastructure.Services
         {
             Kit k = new Kit()
             {
-                Yarns = kit.Yarns,
+                yarnType = kit.yarnType,
+                n = kit.n,
                 Tool = kit.Tool,
                 Pattern = kit.Pattern
             };
             await _kitsRepository.AddAsync(k);
             return new KitDTO()
             {
-                Yarns = kit.Yarns,
+                yarnType = kit.yarnType,
+                n = kit.n,
                 Tool = kit.Tool,
                 Pattern = kit.Pattern
             };
@@ -44,9 +46,9 @@ namespace YarnShop.Infrastructure.Services
             return new KitDTO()
             {
                 Id = x.Id,
-                Yarns = x.Yarns,
-                Tool = x.Tool,
-                Pattern= x.Pattern
+                yarnType = x.yarnType,
+                n = x.n,
+                Pattern = x.Pattern
             };
         }
 
@@ -60,7 +62,8 @@ namespace YarnShop.Infrastructure.Services
             Kit updatedKit = new Kit()
             {
                 Id = id,
-                Yarns = kit.Yarns,
+                yarnType = kit.yarnType,
+                n = kit.n,
                 Tool = kit.Tool,
                 Pattern = kit.Pattern
             };

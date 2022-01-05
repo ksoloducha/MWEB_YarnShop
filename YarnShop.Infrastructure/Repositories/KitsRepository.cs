@@ -7,6 +7,14 @@ namespace YarnShop.Infrastructure.Repositories
 {
     public class KitsRepository : IKitsRepository
     {
+
+        private AppDbContext _appDbContext;
+
+        public KitsRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
         public Task AddAsync(Kit k)
         {
             throw new System.NotImplementedException();

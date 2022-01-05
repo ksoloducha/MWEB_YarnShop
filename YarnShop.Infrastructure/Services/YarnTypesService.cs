@@ -22,18 +22,18 @@ namespace YarnShop.Infrastructure.Services
             {
                 Weight = yarnType.Weight,
                 Length = yarnType.Length,
-                GaugeKnit = yarnType.GaugeKnit,
                 NeedlesSize = yarnType.NeedlesSize,
-                price = yarnType.price
+                price = yarnType.price,
+                Color = yarnType.Color
             };
             await _yarnTypesRepository.AddAsync(y);
             return new YarnTypeDTO()
             {
                 Weight = yarnType.Weight,
                 Length = yarnType.Length,
-                GaugeKnit = yarnType.GaugeKnit,
                 NeedlesSize = yarnType.NeedlesSize,
-                price = yarnType.price
+                price = yarnType.price,
+                Color = yarnType.Color
             };
         }
 
@@ -49,9 +49,9 @@ namespace YarnShop.Infrastructure.Services
             {
                 Weight = x.Weight,
                 Length = x.Length,
-                GaugeKnit = x.GaugeKnit,
                 NeedlesSize = x.NeedlesSize,
-                price = x.price
+                price = x.price,
+                Color = x.Color
             };
         }
 
@@ -67,9 +67,9 @@ namespace YarnShop.Infrastructure.Services
                 Id = id,
                 Weight = yarnType.Weight,
                 Length=yarnType.Length,
-                GaugeKnit=yarnType.GaugeKnit,
                 NeedlesSize=yarnType.NeedlesSize,
-                price=yarnType.price
+                price=yarnType.price,
+                Color = yarnType.Color
             };
             await _yarnTypesRepository.UpdateAsync(updatedYarnType);
             return mapToDTO(updatedYarnType);

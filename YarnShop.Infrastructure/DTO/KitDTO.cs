@@ -6,7 +6,8 @@ namespace YarnShop.Infrastructure.DTO
     public class KitDTO
     {
         public int Id { get; set; }
-        public Dictionary<YarnType, int> Yarns { get; set; }
+        public YarnType yarnType { get; set; }
+        public int n { get; set; }
         public KnittingNeedle Tool { get; set; }
         public string Pattern { get; set; }
     }

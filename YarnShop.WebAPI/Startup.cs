@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication.Certificate;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using YarnShop.Core.Repositories;
 using YarnShop.Infrastructure.Repositories;
 using YarnShop.Infrastructure.Services;
 
-namespace Zawodnicy.WebApi
+namespace YarnShop.WebAPI
 {
     public class Startup
     {
@@ -21,7 +22,7 @@ namespace Zawodnicy.WebApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zawodnicy.WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zawodnicy.WebAPI", Version = "v1" });
             });
 
             services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme)
@@ -53,20 +54,26 @@ namespace Zawodnicy.WebApi
                     };
                 });
 
+            services.AddScoped<IColorsRepository, ColorsRepository>();
+            services.AddScoped<IColorsService, ColorsService>();
+
             services.AddScoped<IKnittingNeedlesRepository, KnittingNeedlesRepository>();
             services.AddScoped<IKnittingNeedlesService, KnittingNeedlesService>();
 
             services.AddScoped<IKitsRepository, KitsRepository>();
             services.AddScoped<IKitsService, KitsService>();
 
-            services.AddScoped<ISkeinsRepository, SkeinsRepository>();
-            services.AddScoped<ISkeinsService, SkeinsService>();
-
             services.AddScoped<IYarnBundlesRepository, YarnBundlesRepository>();
             services.AddScoped<IYarnBundlesService, YarnBundlesService>();
 
             services.AddScoped<IYarnTypesRepository, YarnTypesRepository>();
             services.AddScoped<IYarnTypesService, YarnTypesService>();
+
+            services.AddDbContext<AppDbContext>(
+                 options => options.UseSqlServer(
+                     Configuration.GetConnectionString("YarnShopConnectionString")
+                 )
+             );
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
