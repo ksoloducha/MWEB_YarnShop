@@ -28,9 +28,9 @@ namespace YarnShop.Infrastructure.Services
             await _kitsRepository.AddAsync(k);
             return new KitDTO()
             {
-                yarnType = kit.yarnType,
+                yarnType = YarnTypesService.mapToDTO(kit.yarnType),
                 n = kit.n,
-                Tool = kit.Tool,
+                Tool = KnittingNeedlesService.mapToDTO(kit.Tool),
                 Pattern = kit.Pattern
             };
         }
@@ -46,8 +46,9 @@ namespace YarnShop.Infrastructure.Services
             return new KitDTO()
             {
                 Id = x.Id,
-                yarnType = x.yarnType,
+                yarnType = YarnTypesService.mapToDTO(x.yarnType),
                 n = x.n,
+                Tool = KnittingNeedlesService.mapToDTO(x.Tool),
                 Pattern = x.Pattern
             };
         }

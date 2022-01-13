@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +48,19 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                return await Task.FromResult(_appDbContext.Color);
+                /*using (var dupa = _appDbContext.Database.GetDbConnection().CreateCommand())
+                {
+                    dupa.CommandText = "SELECT * FROM Color";
+                    _appDbContext.Database.OpenConnection();
+                    using (var r = dupa.ExecuteReader())
+                    {
+                        
+                    }
+                }*/
+                
+                var color = _appDbContext.Color;
+                var res = await Task.FromResult(color);
+                return res;
             }
             catch (Exception ex)
             {

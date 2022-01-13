@@ -37,7 +37,7 @@ namespace YarnShop.Infrastructure.Services
             return c.Select(x => mapToDTO(x));
         }
 
-        private ColorDTO mapToDTO(Color x)
+        public static ColorDTO mapToDTO(Color x)
         {
             return new ColorDTO()
             {

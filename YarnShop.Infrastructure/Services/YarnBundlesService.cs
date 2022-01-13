@@ -27,7 +27,7 @@ namespace YarnShop.Infrastructure.Services
             await _yarnBundlesRepository.AddAsync(y);
             return new YarnBundleDTO()
             {
-                YarnType = yarnBundle.YarnType,
+                YarnType = YarnTypesService.mapToDTO(yarnBundle.YarnType),
                 n = yarnBundle.n,
                 PricePercentage = yarnBundle.PricePercentage
             };
@@ -44,7 +44,7 @@ namespace YarnShop.Infrastructure.Services
             return new YarnBundleDTO()
             {
                 Id = x.Id,
-                YarnType = x.YarnType,
+                YarnType = YarnTypesService.mapToDTO(x.YarnType),
                 n = x.n,
                 PricePercentage = x.PricePercentage
             };

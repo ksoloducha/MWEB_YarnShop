@@ -45,7 +45,7 @@ namespace YarnShop.Infrastructure.Services
             return knittingNeedles.Select(c => mapToDTO(c));
         }
 
-        private KnittingNeedleDTO mapToDTO(KnittingNeedle c)
+        public static KnittingNeedleDTO mapToDTO(KnittingNeedle c)
         {
             return new KnittingNeedleDTO()
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YarnShop.Core.Domain;
 using YarnShop.Infrastructure.DTO;
+using YarnShop.Infrastructure.Repositories;
 using YarnShop.Infrastructure.Services;
 
 namespace YarnShop.WebAPI.Controllers
@@ -9,6 +10,7 @@ namespace YarnShop.WebAPI.Controllers
     public class ColorsController : Controller
     {
         private readonly IColorsService _colorsService;
+        private AppDbContext _dbContext;
 
         public ColorsController(IColorsService colorsService)
         {

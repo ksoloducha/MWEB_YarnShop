@@ -1,21 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.Core", "YarnShop.Core\YarnShop.Core.csproj", "{925B974B-2FD1-4765-837F-59402C7B85BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShop.Core", "YarnShop.Core\YarnShop.Core.csproj", "{925B974B-2FD1-4765-837F-59402C7B85BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.Infrastructure", "YarnShop.Infrastructure\YarnShop.Infrastructure.csproj", "{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShop.Infrastructure", "YarnShop.Infrastructure\YarnShop.Infrastructure.csproj", "{75E52EC2-9343-40D0-BDB2-A7585D2EB39E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.WebAPI", "YarnShop.WebAPI\YarnShop.WebAPI.csproj", "{FD7BA834-09F0-44DA-866C-FA8356521B08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShop.WebAPI", "YarnShop.WebAPI\YarnShop.WebAPI.csproj", "{FD7BA834-09F0-44DA-866C-FA8356521B08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShopTest", "YarnShopTest\YarnShopTest.csproj", "{8C679F85-4E1F-4B62-988C-314E4769102E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{925B974B-2FD1-4765-837F-59402C7B85BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,15 @@ Global
 		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD7BA834-09F0-44DA-866C-FA8356521B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C679F85-4E1F-4B62-988C-314E4769102E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C679F85-4E1F-4B62-988C-314E4769102E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C679F85-4E1F-4B62-988C-314E4769102E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C679F85-4E1F-4B62-988C-314E4769102E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B8F61E8-FCDD-4E62-8729-03FA1C83A08E}
 	EndGlobalSection
 EndGlobal

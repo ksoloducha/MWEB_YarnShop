@@ -33,7 +33,7 @@ namespace YarnShop.Infrastructure.Services
                 Length = yarnType.Length,
                 NeedlesSize = yarnType.NeedlesSize,
                 price = yarnType.price,
-                Color = yarnType.Color
+                Color = ColorsService.mapToDTO(yarnType.Color)
             };
         }
 
@@ -43,7 +43,7 @@ namespace YarnShop.Infrastructure.Services
             return y.Select(x => mapToDTO(x));
         }
 
-        private YarnTypeDTO mapToDTO(YarnType x)
+        public static YarnTypeDTO mapToDTO(YarnType x)
         {
             return new YarnTypeDTO()
             {
@@ -51,7 +51,7 @@ namespace YarnShop.Infrastructure.Services
                 Length = x.Length,
                 NeedlesSize = x.NeedlesSize,
                 price = x.price,
-                Color = x.Color
+                Color = ColorsService.mapToDTO(x.Color)
             };
         }
 
