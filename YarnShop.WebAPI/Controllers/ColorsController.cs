@@ -45,7 +45,7 @@ namespace YarnShop.WebAPI.Controllers
         public async Task<IActionResult> UpdatColor([FromBody] Color color, int id)
         {
             ColorDTO k = await _colorsService.EditColor(color, id);
-            Console.WriteLine($"Put colo: {k}");
+            Console.WriteLine($"Put color: {k}");
             return Json(k);
         }
 

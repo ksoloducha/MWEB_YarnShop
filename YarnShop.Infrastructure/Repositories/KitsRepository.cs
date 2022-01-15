@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,7 +36,10 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                _appDbContext.Remove(_appDbContext.Kit.FirstOrDefault(x => x.Id == id));
+                _appDbContext.Remove(_appDbContext.Kit
+                                        .Include(k => k.yarnType).ThenInclude(y => y.Color)
+                                        .Include(k => k.Tool)
+                                        .FirstOrDefault(x => x.Id == id));
                 _appDbContext.SaveChanges();
             }
             catch (Exception ex)
@@ -48,7 +52,10 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                return await Task.FromResult(_appDbContext.Kit);
+                var kits = _appDbContext.Kit
+                                        .Include(k => k.yarnType).ThenInclude(y => y.Color)
+                                        .Include(k => k.Tool);
+                return await Task.FromResult(kits);
             }
             catch (Exception ex)
             {
@@ -61,7 +68,10 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                return _appDbContext.Kit.FirstOrDefault(x => x.Id == id);
+                return _appDbContext.Kit
+                                    .Include(k => k.yarnType).ThenInclude(y => y.Color)
+                                    .Include(k => k.Tool)
+                                    .FirstOrDefault(x => x.Id == id);
             }
             catch (Exception ex)
             {
@@ -74,7 +84,10 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                var s = _appDbContext.Kit.FirstOrDefault(x => x.Id == k.Id);
+                var s = _appDbContext.Kit
+                                        .Include(k => k.yarnType).ThenInclude(y => y.Color)
+                                        .Include(k => k.Tool)
+                                        .FirstOrDefault(x => x.Id == k.Id);
                 s.yarnType = k.yarnType;
                 s.n = k.n;
                 s.Tool = k.Tool;

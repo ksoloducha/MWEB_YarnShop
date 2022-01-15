@@ -47,6 +47,7 @@ namespace YarnShop.Infrastructure.Services
         {
             return new YarnTypeDTO()
             {
+                Id = x.Id,
                 Weight = x.Weight,
                 Length = x.Length,
                 NeedlesSize = x.NeedlesSize,

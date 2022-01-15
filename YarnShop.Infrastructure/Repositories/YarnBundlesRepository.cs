@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                _appDbContext.Remove(_appDbContext.YarnBundles.FirstOrDefault(x => x.Id == id));
+                _appDbContext.Remove(_appDbContext.YarnBundles.Include(y => y.YarnType).ThenInclude(y => y.Color).FirstOrDefault(x => x.Id == id));
                 _appDbContext.SaveChanges();
             }
             catch (Exception ex)
@@ -48,7 +49,7 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                return await Task.FromResult(_appDbContext.YarnBundles);
+                return await Task.FromResult(_appDbContext.YarnBundles.Include(y => y.YarnType).ThenInclude(y => y.Color));
             }
             catch (Exception ex)
             {
@@ -61,7 +62,7 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                return _appDbContext.YarnBundles.FirstOrDefault(x => x.Id == id);
+                return _appDbContext.YarnBundles.Include(y => y.YarnType).ThenInclude(y => y.Color).FirstOrDefault(x => x.Id == id);
             }
             catch (Exception ex)
             {
@@ -74,7 +75,7 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
-                var s = _appDbContext.YarnBundles.FirstOrDefault(x => x.Id == y.Id);
+                var s = _appDbContext.YarnBundles.Include(y => y.YarnType).ThenInclude(y => y.Color).FirstOrDefault(x => x.Id == y.Id);
                 s.YarnType = y.YarnType;
                 s.n = y.n;
                 s.PricePercentage = y.PricePercentage;

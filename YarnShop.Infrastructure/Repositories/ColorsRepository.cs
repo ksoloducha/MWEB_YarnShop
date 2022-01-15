@@ -47,20 +47,8 @@ namespace YarnShop.Infrastructure.Repositories
         public async Task<IEnumerable<Color>> GetAllAsync()
         {
             try
-            {
-                /*using (var dupa = _appDbContext.Database.GetDbConnection().CreateCommand())
-                {
-                    dupa.CommandText = "SELECT * FROM Color";
-                    _appDbContext.Database.OpenConnection();
-                    using (var r = dupa.ExecuteReader())
-                    {
-                        
-                    }
-                }*/
-                
-                var color = _appDbContext.Color;
-                var res = await Task.FromResult(color);
-                return res;
+            {                
+                return await Task.FromResult(_appDbContext.Color);
             }
             catch (Exception ex)
             {
@@ -87,7 +75,8 @@ namespace YarnShop.Infrastructure.Repositories
             try
             {
                 var s = _appDbContext.Color.FirstOrDefault(x => x.Id == c.Id);
-                c.Name = s.Name;
+                s.Name = c.Name;
+                s.n = c.n;
                 _appDbContext.SaveChanges();
             }
             catch (Exception ex)

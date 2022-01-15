@@ -41,7 +41,7 @@ namespace YarnShop.Infrastructure.Services
 
         public async Task<IEnumerable<KnittingNeedleDTO>> BrowseAllAndFilterSize(double minSize)
         {
-            var knittingNeedles = await _knittingNeedlesRepository.GetAllAsync();
+            var knittingNeedles = await _knittingNeedlesRepository.GetSizeEqualOrBigger(minSize);
             return knittingNeedles.Select(c => mapToDTO(c));
         }
 
