@@ -46,7 +46,7 @@ namespace YarnShop.WebAPI.Controllers
         {
             ColorDTO k = await _colorsService.EditColor(color, id);
             Console.WriteLine($"Put color: {k}");
-            return Json(k);
+            return Json(color);
         }
 
         [HttpDelete]

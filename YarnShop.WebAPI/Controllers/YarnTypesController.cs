@@ -44,7 +44,7 @@ namespace YarnShop.WebAPI.Controllers
         {
             YarnTypeDTO y = await _yarnTypesService.EditYarnType(yarnType, id);
             Console.WriteLine($"Put yarn type: {y}");
-            return Json(y);
+            return Json(yarnType);
         }
 
         [HttpDelete]

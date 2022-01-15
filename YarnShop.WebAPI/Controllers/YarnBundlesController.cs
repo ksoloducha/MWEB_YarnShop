@@ -44,7 +44,7 @@ namespace YarnShop.WebAPI.Controllers
         {
             YarnBundleDTO y = await _yarnBundlesService.EditYarnBundle(yarnBundle, id);
             Console.WriteLine($"Put yarn bundle: {y}");
-            return Json(y);
+            return Json(yarnBundle);
         }
 
         [HttpDelete]

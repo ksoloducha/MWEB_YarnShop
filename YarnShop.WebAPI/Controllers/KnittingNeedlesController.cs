@@ -52,7 +52,7 @@ namespace YarnShop.WebAPI.Controllers
         {
             KnittingNeedleDTO c =await _crochetHooksService.EditCrochetHook(crochetHook, id);
             Console.WriteLine($"Put crochet hook: {c}");
-            return Json(c);
+            return Json(crochetHook);
         }
 
         [HttpDelete]

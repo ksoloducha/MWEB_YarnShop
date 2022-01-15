@@ -44,7 +44,7 @@ namespace YarnShop.WebAPI.Controllers
         {
             KitDTO k = await _kitsService.EditKit(kit, id);
             Console.WriteLine($"Put kit: {k}");
-            return Json(k);
+            return Json(kit);
         }
 
         [HttpDelete]
