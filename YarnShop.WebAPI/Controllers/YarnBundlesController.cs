@@ -47,7 +47,7 @@ namespace YarnShop.WebAPI.Controllers
             return Json(yarnBundle);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteYarnBundle(int id)
         {
             Console.WriteLine($"Delete yarn bundle: id {id}");

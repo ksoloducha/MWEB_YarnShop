@@ -47,7 +47,7 @@ namespace YarnShop.WebAPI.Controllers
             return Json(yarnType);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteYarnType(int id)
         {
             Console.WriteLine($"Delete yarn type: id {id}");

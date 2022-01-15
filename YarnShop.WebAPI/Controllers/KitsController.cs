@@ -47,7 +47,7 @@ namespace YarnShop.WebAPI.Controllers
             return Json(kit);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteKit(int id)
         {
             Console.WriteLine($"Delete kit: id {id}");

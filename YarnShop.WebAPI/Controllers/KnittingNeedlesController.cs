@@ -55,7 +55,7 @@ namespace YarnShop.WebAPI.Controllers
             return Json(crochetHook);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteCrochetHook(int id)
         {
             Console.WriteLine($"Delete crochet hook: id {id}");
