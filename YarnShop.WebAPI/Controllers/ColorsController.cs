@@ -10,7 +10,6 @@ namespace YarnShop.WebAPI.Controllers
     public class ColorsController : Controller
     {
         private readonly IColorsService _colorsService;
-        private AppDbContext _dbContext;
 
         public ColorsController(IColorsService colorsService)
         {
@@ -49,7 +48,7 @@ namespace YarnShop.WebAPI.Controllers
             return Json(color);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteColor(int id)
         {
             Console.WriteLine($"Delete color: id {id}");
