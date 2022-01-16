@@ -22,6 +22,16 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
+                YarnType yarnType = _appDbContext.YarnType.FirstOrDefault(x => x.Id == k.yarnType.Id);
+                if (yarnType != null)
+                {
+                    k.yarnType = yarnType;
+                }
+                KnittingNeedle knittingNeedle = _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == k.Tool.Id);
+                if (yarnType != null)
+                {
+                    k.Tool = knittingNeedle;
+                }
                 _appDbContext.Kit.Add(k);
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
@@ -84,6 +94,16 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
+                YarnType yarnType = _appDbContext.YarnType.FirstOrDefault(x => x.Id == k.yarnType.Id);
+                if (yarnType != null)
+                {
+                    k.yarnType = yarnType;
+                }
+                KnittingNeedle knittingNeedle = _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == k.Tool.Id);
+                if (yarnType != null)
+                {
+                    k.Tool = knittingNeedle;
+                }
                 var s = _appDbContext.Kit
                                         .Include(k => k.yarnType).ThenInclude(y => y.Color)
                                         .Include(k => k.Tool)

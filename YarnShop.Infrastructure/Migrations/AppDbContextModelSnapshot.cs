@@ -17,7 +17,7 @@ namespace YarnShop.Infrastructure.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.5");
 
             modelBuilder.Entity("YarnShop.Core.Domain.Color", b =>
                 {

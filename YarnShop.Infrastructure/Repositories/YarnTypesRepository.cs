@@ -22,6 +22,11 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
+                Color color = _appDbContext.Color.FirstOrDefault(x => x.Id == y.Color.Id);
+                if(color != null)
+                {
+                    y.Color = color;
+                }
                 _appDbContext.YarnType.Add(y);
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
@@ -75,6 +80,11 @@ namespace YarnShop.Infrastructure.Repositories
         {
             try
             {
+                Color color = _appDbContext.Color.FirstOrDefault(x => x.Id == y.Color.Id);
+                if (color != null)
+                {
+                    y.Color = color;
+                }
                 var s = _appDbContext.YarnType.Include(y => y.Color).FirstOrDefault(x => x.Id == y.Id);
                 s.Weight = y.Weight;
                 s.Length = y.Length;
