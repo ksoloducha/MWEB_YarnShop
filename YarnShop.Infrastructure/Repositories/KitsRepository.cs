@@ -26,6 +26,7 @@ namespace YarnShop.Infrastructure.Repositories
                 if (yarnType != null)
                 {
                     k.yarnType = yarnType;
+                    k.yarnType.Color = yarnType.Color;
                 }
                 KnittingNeedle knittingNeedle = _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == k.Tool.Id);
                 if (yarnType != null)
@@ -98,6 +99,7 @@ namespace YarnShop.Infrastructure.Repositories
                 if (yarnType != null)
                 {
                     k.yarnType = yarnType;
+                    k.yarnType.Color = yarnType.Color;
                 }
                 KnittingNeedle knittingNeedle = _appDbContext.KnittingNeedle.FirstOrDefault(x => x.Id == k.Tool.Id);
                 if (yarnType != null)

@@ -26,6 +26,7 @@ namespace YarnShop.Infrastructure.Repositories
                 if (yarnType != null)
                 {
                     y.YarnType = yarnType;
+                    y.YarnType.Color = yarnType.Color;
                 }
                 _appDbContext.YarnBundles.Add(y);
                 _appDbContext.SaveChanges();
@@ -84,6 +85,7 @@ namespace YarnShop.Infrastructure.Repositories
                 if (yarnType != null)
                 {
                     y.YarnType = yarnType;
+                    y.YarnType.Color = yarnType.Color;
                 }
                 var s = _appDbContext.YarnBundles.Include(y => y.YarnType).ThenInclude(y => y.Color).FirstOrDefault(x => x.Id == y.Id);
                 s.YarnType = y.YarnType;
