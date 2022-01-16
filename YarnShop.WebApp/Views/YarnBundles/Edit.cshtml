@@ -1,0 +1,71 @@
+﻿@model YarnShop.WebApp.Models.YarnBundleVM
+
+<h4>YarnBundleVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="n" class="control-label"></label>
+                <input asp-for="n" class="form-control" />
+                <span asp-validation-for="n" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePercentage" class="control-label"></label>
+                <input asp-for="PricePercentage" class="form-control" />
+                <span asp-validation-for="PricePercentage" class="text-danger"></span>
+            </div>
+            <th></th>
+            <h5>Yarn Type</h5>
+	        <tr>
+                <div class="form-group">
+                    <label asp-for="YarnType.Id" class="control-label"></label>
+                    <input asp-for="YarnType.Id" class="form-control" />
+                    <span asp-validation-for="YarnType.Id" class="text-danger"></span>
+                </div>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.YarnType.Weight)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.YarnType.Weight)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.YarnType.Length)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.YarnType.Length)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.YarnType.NeedlesSize)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.YarnType.NeedlesSize)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.YarnType.price)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.YarnType.price)
+                </dd>
+            </tr>
+            <a asp-action="YarnTypesList">See Yarn Types List</a>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

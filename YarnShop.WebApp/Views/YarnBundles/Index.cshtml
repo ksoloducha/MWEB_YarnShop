@@ -1,0 +1,64 @@
+﻿@model IEnumerable<YarnShop.WebApp.Models.YarnBundleVM>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.n)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YarnType.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YarnType.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YarnType.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YarnType.price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.n)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YarnType.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YarnType.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YarnType.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YarnType.price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

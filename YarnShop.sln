@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShop.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShop.WebAPI", "YarnShop.WebAPI\YarnShop.WebAPI.csproj", "{FD7BA834-09F0-44DA-866C-FA8356521B08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShopTest", "YarnShopTest\YarnShopTest.csproj", "{8C679F85-4E1F-4B62-988C-314E4769102E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YarnShopTest", "YarnShopTest\YarnShopTest.csproj", "{8C679F85-4E1F-4B62-988C-314E4769102E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarnShop.WebApp", "YarnShop.WebApp\YarnShop.WebApp.csproj", "{233D5C46-9B80-48F2-9B88-E773D665BCD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8C679F85-4E1F-4B62-988C-314E4769102E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C679F85-4E1F-4B62-988C-314E4769102E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C679F85-4E1F-4B62-988C-314E4769102E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233D5C46-9B80-48F2-9B88-E773D665BCD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233D5C46-9B80-48F2-9B88-E773D665BCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233D5C46-9B80-48F2-9B88-E773D665BCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233D5C46-9B80-48F2-9B88-E773D665BCD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

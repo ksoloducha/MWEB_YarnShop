@@ -1,0 +1,43 @@
+﻿@model IEnumerable<YarnShop.WebApp.Models.KnittingNeedleVM>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.n)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Circular)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.n)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Circular)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to Kits List</a>
+</div>
