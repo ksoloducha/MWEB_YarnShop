@@ -1,100 +1,111 @@
 ﻿@model YarnShop.WebApp.Models.KitVM
 
-<h4>KitVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="n" class="control-label"></label>
-                <input asp-for="n" class="form-control" />
-                <span asp-validation-for="n" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pattern" class="control-label"></label>
-                <input asp-for="Pattern" class="form-control" />
-                <span asp-validation-for="Pattern" class="text-danger"></span>
-            </div>
+@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        <br />
+        <i>Only logged in user can modify data</i>
+
+    }
+    else
+    {
+        <h4>KitVM</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="n" class="control-label"></label>
+                        <input asp-for="n" class="form-control" />
+                        <span asp-validation-for="n" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pattern" class="control-label"></label>
+                        <input asp-for="Pattern" class="form-control" />
+                        <span asp-validation-for="Pattern" class="text-danger"></span>
+                    </div>
             
-            <h5>Yarn Type</h5>
-	        <tr>
-                <div class="form-group">
-                    <label asp-for="yarnType.Id" class="control-label"></label>
-                    <input asp-for="yarnType.Id" class="form-control" />
-                    <span asp-validation-for="yarnType.Id" class="text-danger"></span>
-                </div>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.yarnType.Weight)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.yarnType.Weight)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.yarnType.Length)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.yarnType.Length)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.yarnType.NeedlesSize)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.yarnType.NeedlesSize)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.yarnType.price)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.yarnType.price)
-                </dd>
-            </tr>
-            <a asp-action="YarnTypesList">See Yarn Types List</a>
+                    <h5>Yarn Type</h5>
+	                <tr>
+                        <div class="form-group">
+                            <label asp-for="yarnType.Id" class="control-label"></label>
+                            <input asp-for="yarnType.Id" class="form-control" />
+                            <span asp-validation-for="yarnType.Id" class="text-danger"></span>
+                        </div>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.yarnType.Weight)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.yarnType.Weight)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.yarnType.Length)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.yarnType.Length)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.yarnType.NeedlesSize)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.yarnType.NeedlesSize)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.yarnType.price)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.yarnType.price)
+                        </dd>
+                    </tr>
+                    <a asp-action="YarnTypesList">See Yarn Types List</a>
 
-            <h5>Yarn Type</h5>
-	        <tr>
-                <div class="form-group">
-                    <label asp-for="Tool.Id" class="control-label"></label>
-                    <input asp-for="Tool.Id" class="form-control" />
-                    <span asp-validation-for="Tool.Id" class="text-danger"></span>
-                </div>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Tool.Size)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Tool.Size)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Tool.n)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Tool.n)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Tool.Circular)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Tool.Circular)
-                </dd>
-            </tr>
-            <a asp-action="KnittingNeedlesList">See Knitting Needles List</a>
+                    <h5>Yarn Type</h5>
+	                <tr>
+                        <div class="form-group">
+                            <label asp-for="Tool.Id" class="control-label"></label>
+                            <input asp-for="Tool.Id" class="form-control" />
+                            <span asp-validation-for="Tool.Id" class="text-danger"></span>
+                        </div>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.Tool.Size)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.Tool.Size)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.Tool.n)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.Tool.n)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.Tool.Circular)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.Tool.Circular)
+                        </dd>
+                    </tr>
+                    <a asp-action="KnittingNeedlesList">See Knitting Needles List</a>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    }
 }

@@ -173,5 +173,27 @@ namespace YarnShop.WebApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Filter()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> FilteredList(MinSizeVM minSizeVM)
+        {
+            string _restpath = GetHostUrl().Content + ControllerName() + "/filter?size=" + minSizeVM.MinSize;
+            List<KnittingNeedleVM> filteredKnittingNeedleList = new List<KnittingNeedleVM>();
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(_restpath))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    filteredKnittingNeedleList = JsonConvert.DeserializeObject<List<KnittingNeedleVM>>(apiResponse);
+                }
+            }
+
+            return View(filteredKnittingNeedleList);
+        }
     }
 }

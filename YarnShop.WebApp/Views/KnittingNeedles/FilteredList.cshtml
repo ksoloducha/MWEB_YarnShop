@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<YarnShop.WebApp.Models.KnittingNeedleVM>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -36,15 +33,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Circular)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
         </tr>
 }
     </tbody>
 </table>
 
-<p>
-    <a asp-action="Filter">Filter knitting needles by size</a>
-</p>
+<div>
+    <a asp-action="Filter">Change size</a>
+</div>
+
+<div>
+    <a asp-action="Index">See all</a>
+</div>

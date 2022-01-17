@@ -1,53 +1,64 @@
 ﻿@model YarnShop.WebApp.Models.KitVM
 
-<h4>KitVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="n" class="control-label"></label>
-                <input asp-for="n" class="form-control" />
-                <span asp-validation-for="n" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pattern" class="control-label"></label>
-                <input asp-for="Pattern" class="form-control" />
-                <span asp-validation-for="Pattern" class="text-danger"></span>
-            </div>
+@{
+    if (!User.Identity.IsAuthenticated)
+    {
+        <br />
+        <i>Only logged in user can modify data</i>
 
-            <h5>Yarn Type</h5>
-            <div class="form-group">
-                <label asp-for="yarnType.Id" class="control-label"></label>
-                <input asp-for="yarnType.Id" class="form-control" />
-                <span asp-validation-for="yarnType.Id" class="text-danger"></span>
+    }
+    else
+    {
+        <h4>KitVM</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="n" class="control-label"></label>
+                        <input asp-for="n" class="form-control" />
+                        <span asp-validation-for="n" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pattern" class="control-label"></label>
+                        <input asp-for="Pattern" class="form-control" />
+                        <span asp-validation-for="Pattern" class="text-danger"></span>
+                    </div>
+
+                    <h5>Yarn Type</h5>
+                    <div class="form-group">
+                        <label asp-for="yarnType.Id" class="control-label"></label>
+                        <input asp-for="yarnType.Id" class="form-control" />
+                        <span asp-validation-for="yarnType.Id" class="text-danger"></span>
+                    </div>
+
+                    <h5>Yarn Type</h5>
+                    <div class="form-group">
+                        <label asp-for="Tool.Id" class="control-label"></label>
+                        <input asp-for="Tool.Id" class="form-control" />
+                        <span asp-validation-for="Tool.Id" class="text-danger"></span>
+                    </div>
+                    <a asp-action="KnittingNeedlesList">See Knitting Needles List</a>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <h5>Yarn Type</h5>
-            <div class="form-group">
-                <label asp-for="Tool.Id" class="control-label"></label>
-                <input asp-for="Tool.Id" class="form-control" />
-                <span asp-validation-for="Tool.Id" class="text-danger"></span>
-            </div>
-            <a asp-action="KnittingNeedlesList">See Knitting Needles List</a>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    }
 }

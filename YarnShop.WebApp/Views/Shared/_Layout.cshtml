@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,12 +21,69 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Start</a>
+                        </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Info</a>
+                        </li>      
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kits" asp-action="Index">Kits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="YarnBundles" asp-action="Index">Yarn Bundles</a>
+                        </li>                  
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="YarnTypes" asp-action="Index">Yarn Types</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="KnittingNeedles" asp-action="Index">KnittingNeedles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Colors" asp-action="Index">Colors</a>
+                        </li>
+                        <li class="nav-item">
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Zarejestruj się</a>*@
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Sign up</a>
+                        </li>
+
+                         @* Admin dla roli "admin" *@
+                        @{
+                            if (User.IsInRole("admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">*Admin panel</a>
+                                </li>
+                            }
+                            else  //tylko wyswietl nieaktywną opcję
+                            {
+                                <li class="nav-link text-dark">
+                                    <span style="color:darkgray">*Admin panel</span>
+                                </li>
+                            }
+                        }
+
+ 
+                        @* Wylogowanie, Zalogowanie, Zalogowany user *@
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+ 
+                            <li class="nav-link text-dark">
+                                @*<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Witaj @User.Identity.Name</a>*@
+                                Witaj @User.Identity.Name
+                            </li>
+                            <li class="nav-link text-dark">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-right">
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -37,7 +97,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - YarnShop.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - YarnShop.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
