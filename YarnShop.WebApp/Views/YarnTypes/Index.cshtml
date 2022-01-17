@@ -1,73 +1,64 @@
 ﻿@model IEnumerable<YarnShop.WebApp.Models.YarnTypeVM>
 
-@{
-if (!User.Identity.IsAuthenticated)
-{
-    <br />
-    <i>Only logged in user can modify data</i>
-
-} else{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Weight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Length)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NeedlesSize)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color.Name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Weight)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NeedlesSize)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Color.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Color.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NeedlesSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeedlesSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
 }
-}
+    </tbody>
+</table>
