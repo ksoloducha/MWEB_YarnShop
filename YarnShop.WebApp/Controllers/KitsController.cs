@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace YarnShop.WebApp.Controllers
     public class KitsController : Controller
     {
         public IConfiguration Configuration;
+        private readonly ILogger _logger;
 
-        public KitsController(IConfiguration configuration)
+        public KitsController(IConfiguration configuration, ILogger<KitsController> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public ContentResult GetHostUrl()
@@ -34,37 +37,52 @@ namespace YarnShop.WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-            List<KitVM> kitList = new List<KitVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    kitList = JsonConvert.DeserializeObject<List<KitVM>>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
+                List<KitVM> kitList = new List<KitVM>();
 
-            return View(kitList);
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        kitList = JsonConvert.DeserializeObject<List<KitVM>>(apiResponse);
+                    }
+                }
+
+                return View(kitList);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-
-            KitVM k = new KitVM();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    k = JsonConvert.DeserializeObject<KitVM>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
 
-            return View(k);
+                KitVM k = new KitVM();
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        k = JsonConvert.DeserializeObject<KitVM>(apiResponse);
+                    }
+                }
+                return View(k);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }  
         }
 
         [HttpPost]
@@ -89,6 +107,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -98,20 +117,28 @@ namespace YarnShop.WebApp.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-
-            KitVM k = new KitVM();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    k = JsonConvert.DeserializeObject<KitVM>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
 
-            return View(k);
+                KitVM k = new KitVM();
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        k = JsonConvert.DeserializeObject<KitVM>(apiResponse);
+                    }
+                }
+
+                return View(k);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View(ex);
+            }
         }
 
         [HttpPost]
@@ -136,6 +163,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -166,6 +194,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -189,6 +218,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -197,36 +227,51 @@ namespace YarnShop.WebApp.Controllers
 
         public async Task<IActionResult> YarnTypesList()
         {
-            string _restpath = GetHostUrl().Content + "YarnTypes";
-            List<YarnTypeVM> yarnTypeList = new List<YarnTypeVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    yarnTypeList = JsonConvert.DeserializeObject<List<YarnTypeVM>>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + "YarnTypes";
+                List<YarnTypeVM> yarnTypeList = new List<YarnTypeVM>();
 
-            return View(yarnTypeList);
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        yarnTypeList = JsonConvert.DeserializeObject<List<YarnTypeVM>>(apiResponse);
+                    }
+                }
+
+                return View(yarnTypeList);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }
         }
 
         public async Task<IActionResult> KnittingNeedlesList()
         {
-            string _restpath = GetHostUrl().Content + "KnittingNeedles";
-            List<KnittingNeedleVM> knittingNeedlesList = new List<KnittingNeedleVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    knittingNeedlesList = JsonConvert.DeserializeObject<List<KnittingNeedleVM>>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + "KnittingNeedles";
+                List<KnittingNeedleVM> knittingNeedlesList = new List<KnittingNeedleVM>();
 
-            return View(knittingNeedlesList);
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        knittingNeedlesList = JsonConvert.DeserializeObject<List<KnittingNeedleVM>>(apiResponse);
+                    }
+                }
+                return View(knittingNeedlesList);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }
         }
     }
 }

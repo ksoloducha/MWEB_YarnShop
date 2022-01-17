@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace YarnShop.WebApp.Controllers
     public class YarnBundlesController : Controller
     {
         public IConfiguration Configuration;
+        private readonly ILogger _logger;
 
-        public YarnBundlesController(IConfiguration configuration)
+        public YarnBundlesController(IConfiguration configuration, ILogger<YarnBundlesController> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public ContentResult GetHostUrl()
@@ -32,37 +35,53 @@ namespace YarnShop.WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-            List<YarnBundleVM> yarnBundleList = new List<YarnBundleVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    yarnBundleList = JsonConvert.DeserializeObject<List<YarnBundleVM>>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
+                List<YarnBundleVM> yarnBundleList = new List<YarnBundleVM>();
 
-            return View(yarnBundleList);
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        yarnBundleList = JsonConvert.DeserializeObject<List<YarnBundleVM>>(apiResponse);
+                    }
+                }
+
+                return View(yarnBundleList);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View(ex);
+            }
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-
-            YarnBundleVM y = new YarnBundleVM();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    y = JsonConvert.DeserializeObject<YarnBundleVM>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
 
-            return View(y);
+                YarnBundleVM y = new YarnBundleVM();
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        y = JsonConvert.DeserializeObject<YarnBundleVM>(apiResponse);
+                    }
+                }
+
+                return View(y);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View(ex);
+            }
         }
 
         [HttpPost]
@@ -87,6 +106,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -96,20 +116,28 @@ namespace YarnShop.WebApp.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            string _restpath = GetHostUrl().Content + ControllerName();
-
-            YarnBundleVM y = new YarnBundleVM();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    y = JsonConvert.DeserializeObject<YarnBundleVM>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + ControllerName();
 
-            return View(y);
+                YarnBundleVM y = new YarnBundleVM();
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        y = JsonConvert.DeserializeObject<YarnBundleVM>(apiResponse);
+                    }
+                }
+
+                return View(y);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }
         }
 
         [HttpPost]
@@ -134,6 +162,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -164,6 +193,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -187,6 +217,7 @@ namespace YarnShop.WebApp.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return View(e);
             }
 
@@ -196,19 +227,27 @@ namespace YarnShop.WebApp.Controllers
         
         public async Task<IActionResult> YarnTypesList()
         {
-            string _restpath = GetHostUrl().Content + "YarnTypes";
-            List<YarnTypeVM> yarnTypeList = new List<YarnTypeVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    yarnTypeList = JsonConvert.DeserializeObject<List<YarnTypeVM>>(apiResponse);
-                }
-            }
+                string _restpath = GetHostUrl().Content + "YarnTypes";
+                List<YarnTypeVM> yarnTypeList = new List<YarnTypeVM>();
 
-            return View(yarnTypeList);
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        yarnTypeList = JsonConvert.DeserializeObject<List<YarnTypeVM>>(apiResponse);
+                    }
+                }
+
+                return View(yarnTypeList);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return View(e);
+            }
         }
     }
 }
