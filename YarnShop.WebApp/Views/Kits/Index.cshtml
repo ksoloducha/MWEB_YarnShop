@@ -1,88 +1,99 @@
 ﻿@model IEnumerable<YarnShop.WebApp.Models.KitVM>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.n)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pattern)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.yarnType.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.yarnType.Length)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.yarnType.Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.yarnType.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tool.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tool.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tool.n)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tool.Circular)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.n)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pattern)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.yarnType.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.yarnType.Length)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.yarnType.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.yarnType.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tool.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tool.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tool.n)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tool.Circular)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
+@{
+    if (!User.IsInRole("admin"))
+    {
+        <br />
+        <i>Only admin can view kits data</i>
+    }
+    else
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.n)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pattern)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.yarnType.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.yarnType.Length)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.yarnType.Weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.yarnType.price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tool.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tool.Size)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tool.n)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tool.Circular)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.n)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pattern)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.yarnType.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.yarnType.Length)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.yarnType.Weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.yarnType.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tool.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tool.Size)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tool.n)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tool.Circular)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }
-    </tbody>
-</table>

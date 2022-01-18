@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -12,7 +11,6 @@ using YarnShop.WebApp.Models;
 
 namespace YarnShop.WebApp.Controllers
 {
-    [Authorize(Roles = "admin")]
     public class KitsController : Controller
     {
         public IConfiguration Configuration;

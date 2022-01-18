@@ -1,10 +1,10 @@
 ﻿@model YarnShop.WebApp.Models.KitVM
 
 @{
-    if (!User.Identity.IsAuthenticated)
+    if (!User.IsInRole("admin"))
     {
         <br />
-        <i>Only logged in user can modify data</i>
+        <i>Only admin can modify kits data</i>
 
     }
     else
